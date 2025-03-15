@@ -1,4 +1,5 @@
 from typing import Literal
+import emoji
 
 from aiohttp import ClientSession, TCPConnector
 
@@ -30,6 +31,9 @@ All interpretations should be kept as brief as possible—ideally a single short
 
 ERROR_EMOJI_CODE = "🍕🚀🐱🎸🌈⚡️"
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
+
+def remove_non_emoji(text: str) -> str:
+    return ''.join(char for char in text if char in emoji.EMOJI_DATA)
 
 
 class EmojiTranslator:
@@ -64,4 +68,5 @@ class EmojiTranslator:
         self, content_type: Literal["title", "snippet"], text: str
     ) -> str:
         user_content = f"{content_type}/{text}"
-        return await self._post_request(SEARCH_ENGINE_PROMPT, user_content)
+        response_content = await self._post_request(SEARCH_ENGINE_PROMPT, user_content)
+        return remove_non_emoji(response_content)
