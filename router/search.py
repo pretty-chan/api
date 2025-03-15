@@ -19,9 +19,7 @@ class SearchEndpoint:
     engine = GoogleSearchEngine()
     translator = EmojiTranslator()
 
-    @router.get("/{query}", openapi_extra={
-
-    })
+    @router.get("/{query}", openapi_extra={})
     async def search(self, query: str):
         """
         {'title': 'string', 'snippet': 'string', 'image': 'string(optional)'}

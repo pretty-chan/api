@@ -1,5 +1,6 @@
 from contextlib import asynccontextmanager
 from typing import AsyncGenerator
+from fastapi.middleware.cors import CORSMiddleware
 
 from fastapi import FastAPI
 from app.env_validator import settings
@@ -24,6 +25,16 @@ def bootstrap() -> FastAPI:
         redoc_url=None,
         debug=settings.APP_ENV != "production",
     )
+
+    origins = ["http://localhost:7001"]
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=origins,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
     return app
 
 

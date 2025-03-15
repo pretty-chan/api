@@ -38,16 +38,16 @@ def service_logger(name):
         logger.addHandler(file_handler)
         logger.addHandler(console_handler)
 
-    elif env == "production":
-        logger.setLevel(logging.ERROR)
-
-        console_handler = logging.StreamHandler()
-        console_handler.setLevel(logging.ERROR)
-
-        formatter = logging.Formatter(log_format)
-        console_handler.setFormatter(formatter)
-
-        logger.addHandler(console_handler)
+    # elif env == "production":
+    #     logger.setLevel(logging.ERROR)
+    #
+    #     console_handler = logging.StreamHandler()
+    #     console_handler.setLevel(logging.ERROR)
+    #
+    #     formatter = logging.Formatter(log_format)
+    #     console_handler.setFormatter(formatter)
+    #
+    #     logger.addHandler(console_handler)
 
     else:
         raise ValueError(f"Unknown environment: {env}")
