@@ -19,4 +19,7 @@ class GoogleSearchEngine:
             },
         ) as response:
             data = await response.json()
+            if "items" not in data:
+                return []
+            
             return data["items"]
