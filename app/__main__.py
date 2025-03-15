@@ -11,4 +11,4 @@ if __name__ == "__main__":
     else:
         server_arguments.update({"app": "app.main:server", "reload": True})
 
-    uvicorn.run(**server_arguments, reload=True)
+    uvicorn.run(**server_arguments)

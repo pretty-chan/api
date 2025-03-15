@@ -20,7 +20,7 @@ def bootstrap() -> FastAPI:
         lifespan=lifespan,
         docs_url="/api-docs",
         redoc_url=None,
-        debug=settings.APP_ENV == "development",
+        debug=settings.APP_ENV != "production",
     )
     return app
 
