@@ -14,7 +14,7 @@ def service_logger(name):
 
     env = settings.APP_ENV.lower()
 
-    if env == "development" or env == "testing":
+    if env == "development" or env == "local":
         logger.setLevel(logging.INFO)
 
         log_dir = "logs"
