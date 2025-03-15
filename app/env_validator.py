@@ -16,6 +16,8 @@ class Settings(BaseSettings):
     APP_ENV: Literal["development", "production", "local"]
     SERVER_PORT: int
     OPENROUTER_API_KEY: str
+    GOOGLE_SEARCH_API_KEY: str
+    GOOGLE_SEARCH_ENGINE_ID: str
 
     @staticmethod
     @field_validator("SERVER_PORT")
