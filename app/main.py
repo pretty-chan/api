@@ -26,7 +26,7 @@ def bootstrap() -> FastAPI:
         debug=settings.APP_ENV != "production",
     )
 
-    origins = ["http://localhost:7001", "https://hwkg8w4s4g4ks0skgc8cc4wk.apne2a.algorix.cloud", "https://zo8c8sg8g8c00cg0ccsgok0w.apne2a.algorix.cloud"]
+    origins = ["http://localhost:7001", "https://scrapyard-busan.algorix.cloud", "https://zo8c8sg8g8c00cg0ccsgok0w.apne2a.algorix.cloud"]
     app.add_middleware(
         CORSMiddleware,
         allow_origins=origins,
