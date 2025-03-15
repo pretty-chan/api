@@ -5,6 +5,8 @@ from fastapi import FastAPI
 from app.env_validator import settings
 from app.logger import service_logger
 
+from router.search import router as search_router
+
 logger = service_logger(__name__)
 
 
@@ -16,7 +18,7 @@ def bootstrap() -> FastAPI:
         logger.info("Application shutdown complete")
 
     app = FastAPI(
-        title="FooBar Backend API",
+        title="Payload API",
         lifespan=lifespan,
         docs_url="/api-docs",
         redoc_url=None,
@@ -26,3 +28,4 @@ def bootstrap() -> FastAPI:
 
 
 server = bootstrap()
+server.include_router(search_router)
