@@ -1,7 +1,7 @@
-from fastapi import APIRouter
-from fastapi_restful.cbv import cbv
 import json
 
+from fastapi import APIRouter
+from fastapi_restful.cbv import cbv
 from starlette.responses import StreamingResponse
 
 from service.search_engine import GoogleSearchEngine
@@ -25,7 +25,10 @@ class SearchEndpoint:
         {'title': 'string', 'snippet': 'string', 'image': 'string(optional)'}
         """
         text_query = await self.translator.translate_text(query)
+        print(query + " -> " + text_query)
         responses = await self.engine.search(text_query)
+        
+        print(json.dumps(responses, indent=4, ensure_ascii=False))
 
         async def generate():
             for item in responses:
@@ -41,6 +44,12 @@ class SearchEndpoint:
                         for meta_tag in item["pagemap"]["metatags"]:
                             if "og:image" in meta_tag:
                                 data["image"] = meta_tag["og:image"]
+                                
+                if item.get('link'):
+                    data['link'] = item['link']
+                    
+                print(json.dumps(data, indent=4, ensure_ascii=False))
+                    
                 yield json.dumps(data) + "\n"
 
         return StreamingResponse(generate(), media_type="application/json")
