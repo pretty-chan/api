@@ -26,12 +26,6 @@ This creates a **more intuitive and language-free search experience. Now, search
 ![OpenAI](https://img.shields.io/badge/OpenAI-412991?logo=openai&logoColor=white&style=for-the-badge)
 ![Google Search](https://img.shields.io/badge/Google%20Search-4285F4?logo=google&logoColor=white&style=for-the-badge)
 
-## 🗂️ IA
-
-[Explore Our IA Design on Figma](https://fig.page/cZ4QzHS)
-![image](https://github.com/user-attachments/assets/0c309db0-69a3-4cce-8c38-9786c6123fd7)
-
-
 
 ## ⚡ Process Flow
 
